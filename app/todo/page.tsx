@@ -65,7 +65,7 @@ export default function TodoList() {
 
     return (
         <main className='flex flex-col items-center justify-center min-h-screen w-full'>
-            <Card className="w-full max-w-2xl mx-auto shadow-lg">
+            <Card className="w-full max-w-2xl mx-auto md:shadow-lg">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold text-center">Suas tarefas:</CardTitle>
                 </CardHeader>
