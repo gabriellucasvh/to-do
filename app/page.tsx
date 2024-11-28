@@ -1,4 +1,4 @@
-import Inicio from "@/components/specific/Inicio";
+import Inicio from "@/components/Inicio";
 
 export default function Home() {
   return (

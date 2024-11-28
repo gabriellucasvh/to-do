@@ -1,9 +1,6 @@
-'use client'
-
-import React from 'react'
-import { Button } from '../ui/button'
-import { AspectRatio } from '@radix-ui/react-aspect-ratio'
-import Image from 'next/image'
+'use client';
+import { Button } from './ui/button';
+import Image from 'next/image';
 
 const Inicio = () => {
     return (

@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import React from 'react'
-import Preferences from './Preferences'
 import Link from 'next/link'
+import { ModeToggle } from './ModeToggle'
 
 
 
@@ -20,7 +20,7 @@ const Navbar = () => {
                 />
                 <span className='font-bold text-2xl'>Task Master</span>
             </Link>
-            <Preferences />
+            <ModeToggle />
         </div>
     )
 }
