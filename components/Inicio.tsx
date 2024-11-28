@@ -19,7 +19,7 @@ const Inicio = () => {
                     src="/card.png"
                     width={500}
                     height={500}
-                    alt="Task Master logo"
+                    alt="Planner Master logo"
                     quality={100}
                     className='flex items-center justify-center border rounded-lg my-10 shadow-2xl'
                     />

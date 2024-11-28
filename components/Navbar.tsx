@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
 import Link from 'next/link'
 import { ModeToggle } from './ModeToggle'
 
@@ -15,10 +14,10 @@ const Navbar = () => {
                     src="/logo.png"
                     width={60}
                     height={60}
-                    alt="Task Master logo"
+                    alt="Planner Master logo"
                     quality={100}
                 />
-                <span className='font-bold text-2xl'>Task Master</span>
+                <span className='font-bold text-2xl'>Planner Master</span>
             </Link>
             <ModeToggle />
         </div>
