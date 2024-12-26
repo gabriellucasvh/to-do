@@ -22,7 +22,7 @@ const InformacoesCriacao: React.FC<InformacoesCriacaoProps> = ({ data, hora }) =
   };
 
   return (
-    <div className="text-sm text-gray-500">
+    <div className="text-xs text-gray-500">
       <p>{formatarDia(data)}, {hora}</p>
     </div>
   );

@@ -32,17 +32,17 @@ export default function TodoList() {
     const addTask = (e: React.FormEvent) => {
         e.preventDefault();
         if (newTask.trim()) {
-          const now = new Date();
-          const dataCriacao = now.toISOString(); // Salva a data no formato ISO
-          const horaCriacao = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          setTasks([
-            ...tasks,
-            { id: uuidv4(), text: newTask.trim(), completed: false, hora: horaCriacao, data: dataCriacao }
-          ]);
-          setNewTask('');
+            const now = new Date();
+            const dataCriacao = now.toISOString(); // Salva a data no formato ISO
+            const horaCriacao = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            setTasks([
+                ...tasks,
+                { id: uuidv4(), text: newTask.trim(), completed: false, hora: horaCriacao, data: dataCriacao }
+            ]);
+            setNewTask('');
         }
-      };
-      
+    };
+
     const toggleTask = (id: string) => {
         setTasks(tasks.map(task =>
             task.id === id ? { ...task, completed: !task.completed } : task
@@ -71,7 +71,7 @@ export default function TodoList() {
     }, [tasks, filter, searchQuery, sortOrder])
 
     return (
-        <main className='flex flex-col items-center justify-center my-10 w-full'>
+        <main className='flex flex-col items-center justify-center my-10 w-full font-[family-name:var(--font-geist-sans)]'>
             <Card className="w-full max-w-2xl mx-auto md:shadow-lg">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold text-center">Suas tarefas:</CardTitle>
@@ -138,15 +138,19 @@ export default function TodoList() {
                                                     checked={task.completed}
                                                     onCheckedChange={() => toggleTask(task.id)}
                                                 />
-                                                <label
-                                                    htmlFor={task.id}
-                                                    className={`${task.completed ? 'line-through text-gray-500' : ''}`}
-                                                >
-                                                    {task.text}
-                                                </label>
+                                                    <div className='flex flex-col'>
+                                                    <label
+                                                        htmlFor={task.id}
+                                                        className={`${task.completed ? 'line-through text-gray-500' : ''}`}
+                                                    >
+                                                        {task.text}
+                                                    </label>
+                                                    <div>
+                                                        <InformacoesCriacao data={task.data} hora={task.hora} />
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div className='flex items-center gap-3'>
-                                            <InformacoesCriacao data={task.data} hora={task.hora} />
                                                 <Button variant="destructive" size="sm" onClick={() => deleteTask(task.id)}>
                                                     Deletar
                                                 </Button>
