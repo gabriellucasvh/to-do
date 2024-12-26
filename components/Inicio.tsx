@@ -21,9 +21,9 @@ const Inicio = () => {
                     height={500}
                     alt="Planner Master logo"
                     quality={100}
-                    className='flex items-center justify-center border rounded-lg my-10 shadow-2xl'
-                    />
-                    </div>
+                    className='flex items-center justify-center border rounded-lg my-10 shadow-xl dark:shadow-white/40'
+                />
+            </div>
         </div>
     )
 }

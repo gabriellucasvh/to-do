@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ArrowUpDown } from 'lucide-react'
 import { ScrollArea } from "@/components/ui/scroll-area"
+import HoraAtual from '@/components/HoraAtual'
 
 export default function TodoList() {
     const [tasks, setTasks] = useState<Task[]>([])
@@ -29,12 +30,15 @@ export default function TodoList() {
     }, [tasks])
 
     const addTask = (e: React.FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         if (newTask.trim()) {
-            setTasks([...tasks, { id: uuidv4(), text: newTask.trim(), completed: false }])
-            setNewTask('')
+          const now = new Date();
+          const horaCriacao = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          setTasks([...tasks, { id: uuidv4(), text: newTask.trim(), completed: false, hora: horaCriacao }]);
+          setNewTask('');
         }
-    }
+      };
+      
 
     const toggleTask = (id: string) => {
         setTasks(tasks.map(task =>
@@ -138,9 +142,13 @@ export default function TodoList() {
                                                     {task.text}
                                                 </label>
                                             </div>
+                                            <div className='flex items-center gap-3'>
+                                            <HoraAtual hora={task.hora} />
                                             <Button variant="destructive" size="sm" onClick={() => deleteTask(task.id)}>
                                                 Deletar
                                             </Button>
+                                            
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>

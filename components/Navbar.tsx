@@ -8,7 +8,7 @@ import { ModeToggle } from './ModeToggle'
 
 const Navbar = () => {
     return (
-        <div className='flex items-center justify-between h-20 border-b w-full px-4 md:px-20'>
+        <div className='sticky top-0 bg-background flex items-center justify-between h-20 border-b w-full px-4 md:px-20'>
             <Link href="/" className='flex items-center gap-2'>
                 <Image
                     src="/logo.png"
