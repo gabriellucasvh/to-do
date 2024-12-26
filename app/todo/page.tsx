@@ -32,13 +32,13 @@ export default function TodoList() {
     const addTask = (e: React.FormEvent) => {
         e.preventDefault();
         if (newTask.trim()) {
-          const now = new Date();
-          const horaCriacao = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          setTasks([...tasks, { id: uuidv4(), text: newTask.trim(), completed: false, hora: horaCriacao }]);
-          setNewTask('');
+            const now = new Date();
+            const horaCriacao = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            setTasks([...tasks, { id: uuidv4(), text: newTask.trim(), completed: false, hora: horaCriacao }]);
+            setNewTask('');
         }
-      };
-      
+    };
+
 
     const toggleTask = (id: string) => {
         setTasks(tasks.map(task =>
@@ -68,13 +68,13 @@ export default function TodoList() {
     }, [tasks, filter, searchQuery, sortOrder])
 
     return (
-        <main className='flex flex-col items-center justify-center min-h-screen w-full'>
+        <main className='flex flex-col items-center justify-center my-10 w-full'>
             <Card className="w-full max-w-2xl mx-auto md:shadow-lg">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold text-center">Suas tarefas:</CardTitle>
                 </CardHeader>
-                <ScrollArea className='min-h-[300px] max-h-[400px] overflow-y-auto'>
-                    <CardContent className='min-h-[300px] max-h-[400px]'>
+                <ScrollArea className='min-h-[400px] max-h-[400px] overflow-y-auto'>
+                    <CardContent className='min-h-[400px] max-h-[400px]'>
                         <form onSubmit={addTask} className="flex space-x-2 mb-4">
                             <Input
                                 type="text"
@@ -143,11 +143,10 @@ export default function TodoList() {
                                                 </label>
                                             </div>
                                             <div className='flex items-center gap-3'>
-                                            <HoraAtual hora={task.hora} />
-                                            <Button variant="destructive" size="sm" onClick={() => deleteTask(task.id)}>
-                                                Deletar
-                                            </Button>
-                                            
+                                                <HoraAtual hora={task.hora} />
+                                                <Button variant="destructive" size="sm" onClick={() => deleteTask(task.id)}>
+                                                    Deletar
+                                                </Button>
                                             </div>
                                         </li>
                                     ))}
@@ -157,7 +156,7 @@ export default function TodoList() {
                     </CardContent>
 
                 </ScrollArea>
-                <CardFooter className="justify-between">
+                <CardFooter className="mt-2 justify-between">
                     <p>{tasks.filter(task => !task.completed).length} tarefas pendentes</p>
                     <Button
                         variant="outline"

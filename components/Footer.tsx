@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='flex items-center justify-center w-full pb-5'>
+        <div className='flex bottom-0 items-center justify-center w-full pb-5'>
             <h2>Feito por <span className='font-bold'>
                     <Link
                         href="https://gabriellucasvh.vercel.app"
