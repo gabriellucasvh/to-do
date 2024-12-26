@@ -138,7 +138,7 @@ export default function TodoList() {
                                                     checked={task.completed}
                                                     onCheckedChange={() => toggleTask(task.id)}
                                                 />
-                                                    <div className='flex flex-col'>
+                                                    <div className='flex flex-col pl-1'>
                                                     <label
                                                         htmlFor={task.id}
                                                         className={`${task.completed ? 'line-through text-gray-500' : ''}`}
