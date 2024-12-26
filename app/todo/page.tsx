@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ArrowUpDown } from 'lucide-react'
 import { ScrollArea } from "@/components/ui/scroll-area"
-import HoraAtual from '@/components/HoraAtual'
+import InformacoesCriacao from '@/app/todo/components/InformacoesCriacao'
 
 export default function TodoList() {
     const [tasks, setTasks] = useState<Task[]>([])
@@ -32,14 +32,17 @@ export default function TodoList() {
     const addTask = (e: React.FormEvent) => {
         e.preventDefault();
         if (newTask.trim()) {
-            const now = new Date();
-            const horaCriacao = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            setTasks([...tasks, { id: uuidv4(), text: newTask.trim(), completed: false, hora: horaCriacao }]);
-            setNewTask('');
+          const now = new Date();
+          const dataCriacao = now.toISOString(); // Salva a data no formato ISO
+          const horaCriacao = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          setTasks([
+            ...tasks,
+            { id: uuidv4(), text: newTask.trim(), completed: false, hora: horaCriacao, data: dataCriacao }
+          ]);
+          setNewTask('');
         }
-    };
-
-
+      };
+      
     const toggleTask = (id: string) => {
         setTasks(tasks.map(task =>
             task.id === id ? { ...task, completed: !task.completed } : task
@@ -143,7 +146,7 @@ export default function TodoList() {
                                                 </label>
                                             </div>
                                             <div className='flex items-center gap-3'>
-                                                <HoraAtual hora={task.hora} />
+                                            <InformacoesCriacao data={task.data} hora={task.hora} />
                                                 <Button variant="destructive" size="sm" onClick={() => deleteTask(task.id)}>
                                                     Deletar
                                                 </Button>
@@ -154,7 +157,6 @@ export default function TodoList() {
                             </TabsContent>
                         </Tabs>
                     </CardContent>
-
                 </ScrollArea>
                 <CardFooter className="mt-2 justify-between">
                     <p>{tasks.filter(task => !task.completed).length} tarefas pendentes</p>

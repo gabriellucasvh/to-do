@@ -2,7 +2,8 @@ export interface Task {
     id: string;
     text: string;
     completed: boolean;
-    hora: string
+    hora: string;
+    data: string;
   }
   
   
